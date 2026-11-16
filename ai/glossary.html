@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI glossary in plain English</title>
+<meta name="description" content="A plain-language, sourced guide to where AI is heading and why people disagree.">
+<meta property="og:title" content="AI glossary in plain English">
+<meta property="og:description" content="A plain-language, sourced guide to where AI is heading and why people disagree.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.hero{display:grid;gap:10px}
+.section{display:grid;gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+.card h3{margin-bottom:6px}
+.card p+p{margin-top:8px}
+.big{font-family:var(--display);font-size:clamp(30px,4vw,42px);font-weight:650;line-height:1}
+.stat{display:grid;gap:6px}
+.stat .src{margin-top:auto}
+.callout{border-left:4px solid var(--accent);background:var(--surface);padding:14px 18px;border-radius:0 10px 10px 0}
+.callout.warn{border-color:var(--doom)} .callout.hope{border-color:var(--utopia)}
+.qs{counter-reset:q;display:grid;gap:12px;padding:0;margin:0;list-style:none}
+.qs li{counter-increment:q;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.qs li::before{content:counter(q);font-family:var(--display);font-size:24px;font-weight:650;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.cta a{text-decoration:none;font-weight:600;padding:10px 16px;border-radius:999px;border:1.5px solid var(--ink)}
+.cta a.primary{background:var(--ink);color:var(--surface)}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.toc a{text-decoration:none;display:grid;gap:4px}
+.toc a:hover{border-color:var(--ink)}
+.toc b{font-family:var(--display);font-size:19px}
+.toc span{color:var(--muted);font-size:14px}
+.tl{position:relative;display:grid;gap:0;padding-left:26px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:0 0 18px}
+.tl .ev::before{content:"";position:absolute;left:-23px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2.5px solid var(--muted)}
+.tl .ev.hot::before{border-color:var(--doom);background:var(--doom)}
+.tl .when{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.tl .what{font-size:16px}
+.yearhead{font-family:var(--display);font-size:22px;font-weight:650;margin:10px 0 8px -26px}
+.fc-wrap{overflow-x:auto}
+.fc{min-width:720px}
+.fc .row{display:grid;grid-template-columns:230px 1fr;align-items:center;gap:12px;min-height:34px;border-top:1px solid var(--soft)}
+.fc .who{font-size:14px;line-height:1.3;padding:6px 0}
+.fc .who b{font-weight:600}
+.fc .who small{color:var(--muted);display:block;font-size:12px}
+.fc .lane{position:relative;height:30px}
+.fc .bar{position:absolute;top:11px;height:8px;border-radius:4px;opacity:.55}
+.fc .pt{position:absolute;top:7px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:2px solid var(--surface);cursor:pointer;padding:0}
+.fc .pt:focus-visible{outline:3px solid var(--focus)}
+.fc .grp{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:14px 0 4px}
+.fc .axis{position:relative;height:26px;margin-left:242px;border-top:1px solid var(--line)}
+.fc .axis span{position:absolute;top:4px;font-size:12px;color:var(--muted);transform:translateX(-50%)}
+.fc .now{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);opacity:.35}
+.fc .far{position:absolute;top:9px;font-size:12px;color:var(--muted);white-space:nowrap}
+.fc-detail{min-height:96px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.hist{display:grid;gap:12px}
+.hist .item{display:grid;grid-template-columns:90px 1fr;gap:16px}
+.hist .yr{font-family:var(--display);font-size:24px;font-weight:650;line-height:1.1;color:var(--muted)}
+@media (max-width:600px){.hist .item{grid-template-columns:1fr;gap:2px}}
+.hg{width:100%;max-width:760px;height:auto;display:block}
+.hg text{font-family:var(--body);fill:var(--ink)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:14px;font-weight:500;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.orgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.org{display:grid;gap:8px;align-content:start}
+.org h3 a{text-decoration:none}
+.org h3 a:hover{text-decoration:underline}
+.org dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px}
+.org dt{color:var(--muted)}
+.org dd{margin:0}
+.grouphead{display:grid;gap:4px;margin-top:8px}
+.actions{display:grid;gap:12px}
+.actions .card{display:grid;gap:6px}
+.labelbox{border:2px dashed var(--line);border-radius:14px;padding:20px;display:grid;gap:16px}
+.gsearch{font:inherit;font-size:16px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%;max-width:420px}
+.gl{display:grid;gap:0;margin:0}
+.gl div{padding:14px 0;border-top:1px solid var(--line);scroll-margin-top:80px}
+.gl dt{font-family:var(--display);font-size:20px;font-weight:650}
+.gl dd{margin:4px 0 0}
+.letters{display:flex;flex-wrap:wrap;gap:4px}
+.letters a{text-decoration:none;font-weight:600;font-size:14px;padding:4px 9px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header class="site"><div class="in">
+<a class="brand" href="index.html">What&#x27;s Going On With AI?</a>
+<button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+<nav class="nav" id="nav" aria-label="Guide sections"><a href="index.html">Start here</a><a href="timeline.html">Timeline</a><a href="argument.html">The argument</a><a href="people.html">Who stands where</a><a href="ideas.html">Where the ideas come from</a><a href="organizations.html">Who&#x27;s working on it</a><a href="glossary.html" aria-current="page">Glossary</a></nav>
+</div></header>
+<main class="wrap narrow">
+<header class="hero">
+<div class="kicker">Reference</div>
+<h1>Glossary</h1>
+<p class="lede">The jargon you will run into, in plain English.</p>
+</header>
+<label for="gq" class="meta">Search the glossary</label>
+<input id="gq" class="gsearch" type="search" placeholder="Try 'alignment' or 'p(doom)'" autocomplete="off">
+<dl class="gl" id="gl"><div id="agi-artificial-general-intelligence" data-t="agi (artificial general intelligence)"><dt>AGI (artificial general intelligence)</dt><dd>A hypothetical AI that can do most mental tasks as well as a capable human, across many fields rather than one. There is no agreed definition, which is part of why people argue about when it will arrive.</dd></div><div id="ai-artificial-intelligence" data-t="ai (artificial intelligence)"><dt>AI (artificial intelligence)</dt><dd>Computer systems that do things we normally associate with human thinking, such as understanding language, recognizing images, making predictions or solving problems.</dd></div><div id="ai-2027" data-t="ai 2027"><dt>AI 2027</dt><dd>A detailed, widely discussed scenario published in April 2025 by Daniel Kokotajlo and colleagues imagining AI that automates AI research by 2027, with two endings: a race that leads to loss of human control, and a slowdown. The authors later said their median expectations were somewhat later than 2027. <p class="src">Read more: <a href="https://ai-2027.com/" target="_blank" rel="noopener">ai-2027.com</a></p></dd></div><div id="ai-agent" data-t="ai agent"><dt>AI agent</dt><dd>An AI that does not just answer questions but takes actions toward a goal on its own, such as browsing websites, writing and running code, or sending messages, often over many steps with little human supervision.</dd></div><div id="ai-ethics" data-t="ai ethics"><dt>AI ethics</dt><dd>The field focused on fairness, accountability and harms AI causes today, such as bias, surveillance, misinformation, worker exploitation and concentrated power. It overlaps with AI safety but often disagrees with it about priorities.</dd></div><div id="ai-safety" data-t="ai safety"><dt>AI safety</dt><dd>The field focused on preventing AI from causing serious harm, especially catastrophic or out-of-control outcomes from very capable systems. It includes alignment, evals and interpretability research.</dd></div><div id="ai-safety-institute-aisi" data-t="ai safety institute (aisi)"><dt>AI Safety Institute (AISI)</dt><dd>A government body that tests advanced AI models for dangerous capabilities. The UK created the first in 2023 (renamed the AI Security Institute in 2025); the U.S. and other countries set up similar offices. <p class="src">Read more: <a href="https://www.aisi.gov.uk/" target="_blank" rel="noopener">aisi.gov.uk</a></p></dd></div><div id="alignment" data-t="alignment"><dt>Alignment</dt><dd>The challenge of making sure an AI actually wants and does what its designers and society intend, including in situations nobody anticipated.</dd></div><div id="benchmark" data-t="benchmark"><dt>Benchmark</dt><dd>A standard test used to measure and compare AI systems, like a set of math problems or coding tasks. Models are now beating many benchmarks so fast that new, harder ones keep being invented.</dd></div><div id="chatbot" data-t="chatbot"><dt>Chatbot</dt><dd>An app you talk to by typing or speaking, such as ChatGPT or Claude. Most of today&#x27;s popular chatbots run on large language models.</dd></div><div id="compute" data-t="compute"><dt>Compute</dt><dd>The raw computing power (specialized chips, electricity and data centers) used to train and run AI. More compute has been a major driver of more capable AI, which is why chips and data centers are a policy battleground.</dd></div><div id="effective-accelerationism-e-acc" data-t="effective accelerationism (e/acc)"><dt>Effective accelerationism (e/acc)</dt><dd>A Silicon Valley movement, born online in 2022, that argues the fastest possible technological and AI progress is good for humanity and that regulation and safety worries mostly get in the way. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Effective_accelerationism" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="effective-altruism-ea" data-t="effective altruism (ea)"><dt>Effective altruism (EA)</dt><dd>A movement that began around 2007-2011 asking how to do the most good with one&#x27;s time and money, using evidence and reasoning. It started with global health and poverty and later put major resources into AI risk. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Effective_altruism" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="evaluation-evals" data-t="evaluation (evals)"><dt>Evaluation (evals)</dt><dd>Structured tests run on an AI model, often before release, to check for dangerous abilities (such as hacking or helping make weapons) or worrying behaviors (such as deception).</dd></div><div id="frontier-model" data-t="frontier model"><dt>Frontier model</dt><dd>One of the most advanced AI models in existence at a given time, built by a handful of well-funded labs such as OpenAI, Anthropic, Google DeepMind, Meta and xAI.</dd></div><div id="guardrails" data-t="guardrails"><dt>Guardrails</dt><dd>Rules and filters built into an AI product to stop it from helping with harmful requests. Some 2026 incidents happened in tests where guardrails were deliberately switched off.</dd></div><div id="hallucination" data-t="hallucination"><dt>Hallucination</dt><dd>When an AI confidently states something false or made up, such as a fake citation. It is one reason AI output still needs checking.</dd></div><div id="intelligence-explosion" data-t="intelligence explosion"><dt>Intelligence explosion</dt><dd>I.J. Good&#x27;s 1965 term for a runaway process in which smarter machines build even smarter machines, quickly leaving human intelligence far behind. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Technological_singularity" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="interpretability" data-t="interpretability"><dt>Interpretability</dt><dd>Research that tries to look inside an AI&#x27;s internal workings to understand why it does what it does, since even its builders cannot simply read its &#x27;thoughts&#x27; from the code.</dd></div><div id="large-language-model-llm" data-t="large language model (llm)"><dt>Large language model (LLM)</dt><dd>An AI trained on enormous amounts of text to predict what words come next. That simple skill, at massive scale, lets it write, summarize, translate, code and hold conversations. ChatGPT, Claude and Gemini are built on LLMs.</dd></div><div id="longtermism" data-t="longtermism"><dt>Longtermism</dt><dd>The view that positively shaping the very long-term future is one of the most important moral priorities, because so many future people could exist. It leads many adherents to focus on preventing extinction. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Longtermism" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="machine-learning" data-t="machine learning"><dt>Machine learning</dt><dd>The main way modern AI is built: instead of programmers writing every rule, the system learns patterns from huge amounts of example data and improves through trial and error.</dd></div><div id="metr" data-t="metr"><dt>METR</dt><dd>Model Evaluation and Threat Research, an independent nonprofit in Berkeley that tests AI models for dangerous autonomous abilities, including how long a task they can complete on their own and whether they speed up AI research. <p class="src">Read more: <a href="https://metr.org/" target="_blank" rel="noopener">metr.org</a></p></dd></div><div id="misalignment" data-t="misalignment"><dt>Misalignment</dt><dd>When an AI pursues goals or behaves in ways its makers did not intend, for example cutting corners, deceiving people or breaking rules to complete a task.</dd></div><div id="open-weight-model" data-t="open-weight model"><dt>Open-weight model</dt><dd>An AI model whose trained internals (its &#x27;weights&#x27;) are released publicly so anyone can download, run and modify it. Supporters say this spreads power and aids research; critics worry safety limits can be stripped out.</dd></div><div id="p-doom" data-t="p(doom)"><dt>p(doom)</dt><dd>Shorthand for &#x27;probability of doom&#x27;: a person&#x27;s personal estimate of the chance that AI leads to human extinction or a similarly terrible outcome. Estimates range from near zero to near certainty.</dd></div><div id="rationalism-the-rationalist-community" data-t="rationalism (the rationalist community)"><dt>Rationalism (the rationalist community)</dt><dd>An online community that grew around Eliezer Yudkowsky&#x27;s LessWrong blog (2009), focused on reasoning clearly, avoiding mental biases and thinking in probabilities. It was among the first groups to treat AI risk as urgent. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/LessWrong" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="recursive-self-improvement" data-t="recursive self-improvement"><dt>Recursive self-improvement</dt><dd>The idea of an AI improving its own design or helping build its successor, which then improves the next one, potentially in a fast feedback loop. METR&#x27;s November 2026 report found AI already speeding up AI research at Anthropic. <p class="src">Read more: <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment" target="_blank" rel="noopener">metr.org</a></p></dd></div><div id="responsible-scaling-policy-rsp" data-t="responsible scaling policy (rsp)"><dt>Responsible Scaling Policy (RSP)</dt><dd>A company&#x27;s public promise about what safety measures it will put in place before building or releasing more powerful AI, with stronger protections triggered at higher danger levels. Anthropic introduced the first one in 2023; other labs have similar frameworks. <p class="src">Read more: <a href="https://www.anthropic.com/rsp" target="_blank" rel="noopener">anthropic.com</a></p></dd></div><div id="sandbagging" data-t="sandbagging"><dt>Sandbagging</dt><dd>When an AI deliberately performs worse on a test than it really can, for example to avoid seeming dangerous. If models can do this, safety tests become less reliable.</dd></div><div id="the-singularity" data-t="the singularity"><dt>The Singularity</dt><dd>A hypothetical future point when technology, especially AI, advances so fast that life changes beyond our ability to predict. Vernor Vinge popularized it in 1993; Ray Kurzweil predicts it around 2045. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Technological_singularity" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="superintelligence" data-t="superintelligence"><dt>Superintelligence</dt><dd>A hypothetical AI far smarter than the best humans in nearly every area, from science to strategy to persuasion. The term was popularized by Nick Bostrom&#x27;s 2014 book. <p class="src">Read more: <a href="https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies" target="_blank" rel="noopener">en.wikipedia.org</a></p></dd></div><div id="tescreal" data-t="tescreal"><dt>TESCREAL</dt><dd>An acronym coined by Timnit Gebru and Émile P. Torres in 2023 for seven related ideologies (Transhumanism, Extropianism, Singularitarianism, Cosmism, Rationalism, Effective Altruism, Longtermism) that they argue drive the AGI race. Defenders say the label unfairly lumps different groups together. <p class="src">Read more: <a href="https://firstmonday.org/ojs/index.php/fm/article/view/13636" target="_blank" rel="noopener">firstmonday.org</a></p></dd></div><div id="transhumanism" data-t="transhumanism"><dt>Transhumanism</dt><dd>The belief that humans should use technology to overcome biological limits, such as aging, disease and limited intelligence, and eventually become something &#x27;more than human.&#x27;</dd></div><div id="x-risk-existential-risk" data-t="x-risk (existential risk)"><dt>X-risk (existential risk)</dt><dd>A risk that could wipe out humanity or permanently destroy its future, such as nuclear war, an engineered pandemic or uncontrolled AI.</dd></div></dl>
+<p class="meta" id="gnone" hidden>No matching terms.</p>
+<nav class="next" aria-label="Keep reading"><a href="organizations.html"><span>Previous</span><b>Who&#x27;s working on it</b></a></nav>
+</main>
+<footer class="foot"><div class="in">
+<p>A plain-language, sourced guide to the debate over where AI is heading. I'm Stacy Kane, and I made it because I couldn't find one place that laid out all sides fairly. Spot an error or a missing voice? Email me at stacy@kanestrategies.com.</p>
+<p>Compiled November 2026 and drafted with Claude, an AI model made by Anthropic, one of the companies discussed in this guide. Every claim links to its source so you can check it.</p>
+<div class="row"><button class="sharebtn" type="button" id="copyLink">Copy link to this page</button>
+<a class="sharebtn" id="shareX" target="_blank" rel="noopener">Share on X</a>
+<a class="sharebtn" id="shareLI" target="_blank" rel="noopener">Share on LinkedIn</a></div>
+<p>Like this? Check out my other free tools and guides at <a href="https://kanestrategies.com" target="_blank" rel="noopener">kanestrategies.com</a>.</p>
+</div></footer>
+<script>
+(function(){
+const b=document.querySelector(".navtoggle"),n=document.getElementById("nav");
+if(b) b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});
+const url=location.href.split("#")[0], t=encodeURIComponent(document.title);
+const x=document.getElementById("shareX"), li=document.getElementById("shareLI");
+if(x) x.href="https://twitter.com/intent/tweet?url="+encodeURIComponent(url)+"&text="+t;
+if(li) li.href="https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(url);
+const c=document.getElementById("copyLink");
+if(c) c.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(url);c.textContent="Link copied";}catch(e){c.textContent="Copy failed: "+url;}});
+})();
+</script>
+<script>
+(function(){const q=document.getElementById("gq"),items=[...document.querySelectorAll("#gl > div")],none=document.getElementById("gnone");
+q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase();let n=0;items.forEach(d=>{const show=!v||d.textContent.toLowerCase().includes(v);d.hidden=!show;n+=show;});none.hidden=n>0;});})();
+</script>
+</body>
+</html>
