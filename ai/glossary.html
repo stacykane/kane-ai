@@ -86,13 +86,20 @@
 .gl dd{margin:4px 0 0}
 .letters{display:flex;flex-wrap:wrap;gap:4px}
 .letters a{text-decoration:none;font-weight:600;font-size:14px;padding:4px 9px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:820px){.doors{grid-template-columns:1fr}}
+.door{text-decoration:none;display:grid;gap:8px;align-content:start;padding:22px;border-width:2px}
+.door:hover{border-color:var(--ink)}
+.door b{font-family:var(--display);font-size:24px;line-height:1.15}
+.door span{color:var(--muted);font-size:15px}
+.door .dn{font-family:var(--display);font-weight:650;font-size:18px;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center}
 </style>
 </head>
 <body>
 <header class="site"><div class="in">
 <a class="brand" href="index.html">What&#x27;s Going On With AI?</a>
 <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav class="nav" id="nav" aria-label="Guide sections"><a href="index.html">Start here</a><a href="timeline.html">Timeline</a><a href="argument.html">Test the argument</a><a href="people.html">Who stands where</a><a href="ideas.html">Where the ideas come from</a><a href="organizations.html">Who&#x27;s working on it</a><a href="glossary.html" aria-current="page">Glossary</a></nav>
+<nav class="nav" id="nav" aria-label="Guide sections"><a href="index.html">Start here</a><a href="argument.html">What you&#x27;d have to believe</a><a href="people.html">Who stands where</a><a href="ideas.html">Where it comes from</a><a href="timeline.html">Timeline</a><a href="organizations.html">Who&#x27;s working on it</a><a href="glossary.html" aria-current="page">Glossary</a></nav>
 </div></header>
 <main class="wrap narrow">
 <header class="hero">

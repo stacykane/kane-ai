@@ -86,13 +86,20 @@
 .gl dd{margin:4px 0 0}
 .letters{display:flex;flex-wrap:wrap;gap:4px}
 .letters a{text-decoration:none;font-weight:600;font-size:14px;padding:4px 9px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:820px){.doors{grid-template-columns:1fr}}
+.door{text-decoration:none;display:grid;gap:8px;align-content:start;padding:22px;border-width:2px}
+.door:hover{border-color:var(--ink)}
+.door b{font-family:var(--display);font-size:24px;line-height:1.15}
+.door span{color:var(--muted);font-size:15px}
+.door .dn{font-family:var(--display);font-weight:650;font-size:18px;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center}
 </style>
 </head>
 <body>
 <header class="site"><div class="in">
 <a class="brand" href="index.html">What&#x27;s Going On With AI?</a>
 <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav class="nav" id="nav" aria-label="Guide sections"><a href="index.html">Start here</a><a href="timeline.html">Timeline</a><a href="argument.html">Test the argument</a><a href="people.html">Who stands where</a><a href="ideas.html" aria-current="page">Where the ideas come from</a><a href="organizations.html">Who&#x27;s working on it</a><a href="glossary.html">Glossary</a></nav>
+<nav class="nav" id="nav" aria-label="Guide sections"><a href="index.html">Start here</a><a href="argument.html">What you&#x27;d have to believe</a><a href="people.html">Who stands where</a><a href="ideas.html" aria-current="page">Where it comes from</a><a href="timeline.html">Timeline</a><a href="organizations.html">Who&#x27;s working on it</a><a href="glossary.html">Glossary</a></nav>
 </div></header>
 <main class="wrap narrow">
 <header class="hero">
@@ -138,7 +145,7 @@
 </div>
 <div class="card"><h3>People who changed lanes</h3><ul class="prose" style="padding-left:20px"><li><b><a href="people.html#p=Geoffrey Hinton">Geoffrey Hinton</a>.</b> Spent decades building the neural-network methods behind today&#x27;s AI, then left Google in 2023 so he could warn about its dangers freely. <a class="src" href="https://www.adn.com/nation-world/2023/05/02/pioneer-of-ai-leaves-google-to-warn-of-techs-dangers/" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Daniel Kokotajlo">Daniel Kokotajlo</a>.</b> Worked on governance at OpenAI from 2022 to 2024, then quit after losing confidence that it would behave responsibly around the time of AGI, refusing to sign a non-disparagement agreement that put about $2 million in equity at risk. <a class="src" href="https://time.com/collections/time100-ai-2024/7012881/daniel-kokotajlo/" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Elon Musk">Elon Musk</a>.</b> Co-founded OpenAI in 2015 partly out of fear that AI controlled by Google could be dangerous, still puts the odds of annihilation at about 10 to 20%, and now races to build it at xAI. <a class="src" href="https://time.com/6310076/elon-musk-ai-walter-isaacson-biography/" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Émile P. Torres (they/them)">Émile P. Torres</a>.</b> Once wrote a book in defense of longtermist ideas, then left the movement, became one of its most prominent critics, and later co-coined the term TESCREAL with Timnit Gebru. <a class="src" href="https://aeon.co/essays/why-longtermism-is-the-worlds-most-dangerous-secular-credo" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Bernie Sanders">Bernie Sanders</a>.</b> Sanders&#x27;s early AI work centered on jobs and inequality (Oct 2025 HELP report estimating nearly 100 million jobs at risk). By September 2026 he was also treating superintelligence as a threat to humanity and introduced a bill to ban it. <a class="src" href="https://www.vermontpublic.org/local-news/2026-09-23/sen-bernie-sanders-unveils-bill-to-ban-artificial-superintelligence-and-create-department-of-ai" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Nick Bostrom">Nick Bostrom</a>.</b> Bostrom wrote the AI-risk classic &#x27;Superintelligence&#x27; (2014), then &#x27;Deep Utopia&#x27; (2024) about life after AI solves our problems. In a 2026 working paper he argued that, judged only by the interests of people alive today, even high catastrophe probabilities are often worth accepting to reach superintelligence sooner. <a class="src" href="https://nickbostrom.com/optimal.pdf" target="_blank" rel="noopener">Source</a></li><li><b><a href="people.html#p=Peter Thiel">Peter Thiel</a>.</b> Thiel was an early funder and adviser of Yudkowsky&#x27;s Singularity Institute (2006). In his 2025 Antichrist lectures he cast calls to stop or regulate AI, including Yudkowsky&#x27;s, as the work of a &#x27;Luddite&#x27; Antichrist figure leading toward a one-world state. <a class="src" href="https://www.cp24.com/news/world/2025/10/10/tech-billionaire-thiel-says-greta-thunberg-servant-of-antichrist/" target="_blank" rel="noopener">Source</a></li></ul></div>
 </section>
-<nav class="next" aria-label="Keep reading"><a href="people.html"><span>Previous</span><b>Who stands where</b></a><a href="organizations.html" style="text-align:right"><span>Next</span><b>Who&#x27;s working on it</b></a></nav>
+<nav class="next" aria-label="Keep reading"><a href="people.html"><span>Previous</span><b>Who stands where</b></a><a href="timeline.html" style="text-align:right"><span>Next</span><b>Timeline</b></a></nav>
 </main>
 <footer class="foot"><div class="in">
 <p>A plain-language, sourced guide to the debate over where AI is heading. I'm Stacy Kane, and I made it because I couldn't find one place that laid out all sides fairly. Spot an error or a missing voice? Email me at stacy@kanestrategies.com.</p>
